@@ -1,0 +1,19 @@
+class Solution {
+    public boolean isOneBitCharacter(int[] bits) {
+        if(bits.length == 1){
+            if(bits[0] == 1)return false;
+            if(bits[0] == 0)return true;
+        }
+       int i=0;
+        boolean flag = false;
+        while(i<bits.length-1){
+            i+= bits[i]+1;           
+        
+        }
+        if(i==bits.length-1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
