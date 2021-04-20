@@ -1,0 +1,23 @@
+class Solution {
+    int count;
+    public int countArrangement(int n) {
+        int[] nums = new int[n+1];
+        count = 0;
+        beautiful(nums, 1, n);
+        return count;
+    }
+    
+    void beautiful(int[] arr, int val , int n){
+        if(val > n){
+            count++;
+            return;
+        }
+        for(int i=1; i<=n; i++){
+            if(arr[i] == 0 && (val%i == 0 || i%val == 0)){
+                arr[i] = val;
+                beautiful(arr,val+1, n);
+                arr[i] = 0;
+            }
+        }
+    }
+}
