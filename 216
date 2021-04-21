@@ -1,0 +1,27 @@
+class Solution {
+    List<List<Integer>> list;
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        list = new ArrayList<>();
+        ArrayList<Integer> combination = new ArrayList<>();
+        
+        if(k>n){
+            return list;
+        }
+        findCombinations(n , k , 1, combination);
+        return list;
+    }
+    void findCombinations(int n, int k, int startidx, ArrayList<Integer> combination){
+        if(combination.size() == k && n == 0 ){
+            list.add(new ArrayList<>(combination));
+            return;
+        }
+        
+        for(int i= startidx; i<= 9 && combination.size() < k; i++){
+            if(i>n)return;
+            combination.add(i);
+            findCombinations(n-i, k  , i+1 , combination);
+            combination.remove(combination.size()-1);
+        }
+        return;
+    }
+}
